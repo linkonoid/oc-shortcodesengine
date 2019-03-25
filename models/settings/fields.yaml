@@ -1,0 +1,88 @@
+tabs:
+    fields:
+        parser:
+            tab: 'linkonoid.shortcodesengine::lang.settings.parser.tab'
+            label: 'linkonoid.shortcodesengine::lang.settings.parser.parser'
+            span: full
+            type: dropdown
+            options:
+                regular: 'Regular parser'
+                regex: 'Regex parser'
+                wordpress: 'Wordpress parser'
+        syntax_opening_tag:
+            tab: 'linkonoid.shortcodesengine::lang.settings.parser.tab'
+            label: 'linkonoid.shortcodesengine::lang.settings.parser.syntax_opening_tag'
+            span: left
+            default: '['
+            type: text            
+        syntax_closing_tag:
+            tab: 'linkonoid.shortcodesengine::lang.settings.parser.tab'
+            label: 'linkonoid.shortcodesengine::lang.settings.parser.syntax_closing_tag'
+            span: right
+            default: ']'            
+            type: text   
+        syntax_closing_tag_marker:
+            tab: 'linkonoid.shortcodesengine::lang.settings.parser.tab'
+            label: 'linkonoid.shortcodesengine::lang.settings.parser.syntax_closing_tag_marker'
+            span: left
+            default: '/'
+            type: text   
+        syntax_parameter_value_separator:
+            tab: 'linkonoid.shortcodesengine::lang.settings.parser.tab'
+            label: 'linkonoid.shortcodesengine::lang.settings.parser.syntax_parameter_value_separator'
+            span: left
+            default: '='            
+            type: text   
+        syntax_parameter_value_delimiter:
+            tab: 'linkonoid.shortcodesengine::lang.settings.parser.tab'
+            label: 'linkonoid.shortcodesengine::lang.settings.parser.syntax_parameter_value_delimiter'
+            span: right
+            default: '"'            
+            type: text
+        shortcodes:
+            tab: 'linkonoid.shortcodesengine::lang.settings.usershortcodes.tab'
+            span: full
+            prompt: 'linkonoid.shortcodesengine::lang.settings.usershortcodes.promt'                        
+            type: repeater
+            form:
+                fields:
+                    shortcode_name:
+                        tab: 'linkonoid.shortcodesengine::lang.settings.usershortcodes.tab'
+                        label: 'linkonoid.shortcodesengine::lang.settings.usershortcodes.shortcode_name'                       
+                        span: left
+                        type: text
+                    shortcode_unique_code:
+                        tab: 'linkonoid.shortcodesengine::lang.settings.usershortcodes.tab'
+                        label: 'linkonoid.shortcodesengine::lang.settings.usershortcodes.shortcode_unique_code'                       
+                        span: right
+                        type: text                                                  
+                    shortcode_values:
+                        tab: 'linkonoid.shortcodesengine::lang.settings.usershortcodes.tab'
+                        span: full
+                        prompt: 'linkonoid.shortcodesengine::lang.settings.usershortcodes.shortcode_values_promt'                        
+                        type: repeater
+                        form:
+                            fields:
+                                shortcode_value_name:
+                                    tab: 'linkonoid.shortcodesengine::lang.settings.usershortcodes.tab'
+                                    label: 'linkonoid.shortcodesengine::lang.settings.usershortcodes.shortcode_value_name'                       
+                                    span: left
+                                    type: text                    
+                                shortcode_value_default:
+                                    tab: 'linkonoid.shortcodesengine::lang.settings.usershortcodes.tab'
+                                    label: 'linkonoid.shortcodesengine::lang.settings.usershortcodes.shortcode_value_default'                       
+                                    span: right
+                                    type: text                          
+                    shortcode_code:
+                        tab: 'linkonoid.shortcodesengine::lang.settings.usershortcodes.tab'                        
+                        label: 'linkonoid.shortcodesengine::lang.settings.usershortcodes.shortcode_code'
+                        span: auto
+                        type: codeeditor
+                        size: huge
+                        language: php
+                    shortcode_assets:
+                        tab: 'linkonoid.shortcodesengine::lang.settings.usershortcodes.tab'                        
+                        label: 'linkonoid.shortcodesengine::lang.settings.usershortcodes.shortcode_assets'
+                        span: auto
+                        type: textarea
+                        size: huge      

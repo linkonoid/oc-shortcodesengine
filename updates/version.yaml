@@ -1,0 +1,6 @@
+1.0.1: 
+      - Initialize plugin
+1.0.2:
+      - Events shema update for not conflict others plugins. Little bugs correction. Adding new shortcodes.
+1.0.3:
+      - Fixes bug on run with empty settings.
