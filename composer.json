@@ -1,0 +1,14 @@
+{
+    "name": "linkonoid/shortcodesengine",
+    "description": "Shortcodes engine for OctoberCMS",
+    "type": "october-plugin",
+    "license": "GPL-3",
+    "authors": [
+        {
+            "name": "Max Barulin"
+        }
+    ],
+    "require": {
+        "thunderer/shortcode": "^0.7.4"
+    }
+}
