@@ -4,3 +4,5 @@
       - Events shema update for not conflict others plugins. Little bugs correction. Adding new shortcodes.
 1.0.3:
       - Fixes bug on run with empty settings.
+1.0.4:
+      - Little changes in code. Added "Blog" Shortcode.

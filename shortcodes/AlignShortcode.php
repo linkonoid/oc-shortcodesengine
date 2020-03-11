@@ -1,19 +1,18 @@
 <?php namespace Linkonoid\ShortcodesEngine\Classes;
 
 use Thunder\Shortcode\Shortcode\ShortcodeInterface;
-use Thunder\Shortcode\Shortcode\ProcessedShortcode;
 
 class AlignShortcode extends Shortcode
-{ 
+{
     public function __construct($manager)
     {
         parent::__construct();
         $this->manager = $manager;
     }
- 
+
     public function init()
     {
-        $this->manager->getHandlers()->add('center', function(ProcessedShortcode $sc) {
+        $this->manager->getHandlers()->add('center', function(ShortcodeInterface $sc) {
             return '<div style="text-align: center;">'.$sc->getContent().'</div>';
         });
 

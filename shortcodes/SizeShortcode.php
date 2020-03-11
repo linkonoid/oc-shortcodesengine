@@ -13,9 +13,9 @@ class SizeShortcode extends Shortcode
 
     public function init()
     {
-        $this->manager->getHandlers()->add('size', function(ShortcodeInterface $shortcode) {
-            $size = $shortcode->getParameter('size', $shortcode->getBbCode());
-            return '<span style="font-size: '.$size.'px;">'.$shortcode->getContent().'</span>';
+        $this->manager->getHandlers()->add('size', function(ShortcodeInterface $sc) {
+            $size = $sc->getParameter('size', $sc->getBbCode());
+            return '<span style="font-size: '.$size.'px;">'.$sc->getContent().'</span>';
         });
     }
 }

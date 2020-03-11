@@ -12,10 +12,10 @@ use Linkonoid\ShortcodesEngine\Classes\ShortcodeObject;
 /**
  * @package linkonoid\shortcodesEngine
  * @author Max Barulin (https://github.com/linkonoid)
- */ 
+ */
 
 class Plugin extends PluginBase
-{	    
+{
 
     protected $shortcodesManager;
 
@@ -23,7 +23,7 @@ class Plugin extends PluginBase
      * @var array Plugin dependencies
      */
     public $require = [];
-	
+
     public function pluginDetails()
     {
         return [
@@ -36,7 +36,7 @@ class Plugin extends PluginBase
     }
 
     public function registerPermissions()
-    {      
+    {
  	return [
             'linkonoid.shortcodesengine.access_settings'  => [
             'tab'   => 'linkonoid.shortcodesengine::lang.plugin.settings.permissions.tab',
@@ -46,7 +46,7 @@ class Plugin extends PluginBase
     }
 
     public function registerSettings()
-    {	
+    {
         return [
             'settings' => [
                 'label' => 'linkonoid.shortcodesengine::lang.plugin.settings.label',
@@ -55,7 +55,7 @@ class Plugin extends PluginBase
                 'icon' => 'icon-code',
                 'class' => 'Linkonoid\ShortcodesEngine\Models\Settings',
 				'keywords' => 'linkonoid.shortcodesengine::lang.plugin.settings.keywords',
-                'order' => 550,               
+                'order' => 550,
                 'permissions' => ['linkonoid.shortcodesengine.access_settings']
             ]
         ];
@@ -71,9 +71,9 @@ class Plugin extends PluginBase
     }
 
 	public function boot()
-    {         
-        $shortcodesManager = $this->shortcodesManager = new shortcodesManager();       
-      
+    {
+        $shortcodesManager = $this->shortcodesManager = new shortcodesManager();
+
         Event::listen('cms.page.init', function ($controller, $page) {
             $this->shortcodesManager->resetObjects();
             $this->shortcodesManager->resetAssets();
@@ -82,31 +82,20 @@ class Plugin extends PluginBase
 
         Event::listen('linkonoid.shortcodesengine.onshortcodeHandlers', function () {
             $this->shortcodesManager->registerUsershortcodes();
-            $this->shortcodesManager->registerAllshortcodes(__DIR__.'/shortcodes');            
+            $this->shortcodesManager->registerAllshortcodes(__DIR__.'/shortcodes');
         });
 
         Event::listen('cms.page.start', function ($controller) {
             $shortcode_assets = $this->shortcodesManager->getAssets();
             if (!empty($shortcode_assets)) {
-                if (array_key_exists('css',$shortcode_assets)) foreach ($shortcode_assets['css'] as $key => $value) if (!empty($value)) $controller->addCss($value);
-                if (array_key_exists('js',$shortcode_assets)) foreach ($shortcode_assets['js'] as $key => $value) if (!empty($value)) $controller->addJs($value);               
-                //plugins/linkonoid/shortcodesengine/assets/js/test.js  - alert test function                                            
-            }              
-        });
-/*
-        Event::listen('cms.page.render', function ($controller, $result) {          
-            return $this->shortcodesManager->processContent($result); 
-        });
-*/ 
-        Event::listen('cms.page.display', function ($controller, $url, $page, $result)
-        {                 
-            if (!is_string($result)) return $result;
-            if ($event = Event::fire('linkonoid.display', [$controller, $url, $page, &$result])) return $result;
-            //Response::make($result, $controller->getStatusCode());    
+                if (array_key_exists('css',$shortcode_assets)) foreach ($shortcode_assets['css'] as $key => $value) if (!empty($value)) $controller->addCss($value,'core');
+                if (array_key_exists('js',$shortcode_assets)) foreach ($shortcode_assets['js'] as $key => $value) if (!empty($value)) $controller->addJs($value);
+                //plugins/linkonoid/shortcodesengine/assets/js/test.js  - alert test function
+            }
         });
 
-        Event::listen('linkonoid.display', function ($controller, $url, $page, &$result) {
-            $result = $this->shortcodesManager->processContent($result); 
-        });
-   }     
-} 
+		Event::listen('cms.page.postprocess', function ($controller, $url, $page, $dataHolder) {
+		    $dataHolder->content = $this->shortcodesManager->processContent($dataHolder->content);
+		});
+   }
+}

@@ -13,8 +13,8 @@ class UnderlineShortcode extends Shortcode
 
     public function init()
     {
-        $this->manager->getHandlers()->add('u', function(ShortcodeInterface $shortcode) {
-            return '<span style="text-decoration: underline;">'.$shortcode->getContent().'</span>';
+        $this->manager->getHandlers()->add('u', function(ShortcodeInterface $sc) {
+            return '<span style="text-decoration: underline;">'.$sc->getContent().'</span>';
         });
     }
 }

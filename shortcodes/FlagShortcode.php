@@ -13,11 +13,11 @@ class FlagShortcode extends Shortcode
 
     public function init()
     {
-        $this->manager->getHandlers()->add('flag', function(ShortcodeInterface $shortcode) {
-            $flag = $sc->getParameter('flag');
-            return '<i class="flag-'.$flag.'">'.$shortcode->getContent().'</i>';
+        $this->manager->getHandlers()->add('flag', function(ShortcodeInterface $sc) {
+            $flag = $sc->getParameter('flag', $sc->getBbCode());
+            return '<i class="flag-'.$flag.' oc-flag-squared">'.$sc->getContent().'</i>';
         });
-        
+
 
     }
 }

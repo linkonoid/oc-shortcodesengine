@@ -5,7 +5,7 @@ use Thunder\Shortcode\Shortcode\ShortcodeInterface;
 /**
  * @package linkonoid\shortcodesEngine
  * @author Max Barulin (https://github.com/linkonoid)
- */ 
+ */
 
 class Shortcode
 {
@@ -17,8 +17,8 @@ class Shortcode
 
     public function init()
     {
-        $this->manager->handlers->add('u', function(ShortcodeInterface $shortcode) {
-            return strtoupper($shortcode->getContent());
+        $this->manager->handlers->add('u', function(ShortcodeInterface $sc) {
+            return strtoupper($sc->getContent());
         });
     }
 

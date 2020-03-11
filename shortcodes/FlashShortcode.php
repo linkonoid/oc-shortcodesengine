@@ -9,11 +9,11 @@ class FlashShortcode extends Shortcode
         parent::__construct();
         $this->manager = $manager;
         //$this->manager->addAssets('js','/modules/system/assets/ui/storm.js');
-        //$this->manager->addAssets('css','/modules/system/assets/ui/storm.css'); 
+        //$this->manager->addAssets('css','/modules/system/assets/ui/storm.css');
         //$this->manager->addAssets('js','/modules/system/assets/ui/js/foundation.baseclass.js');
         //$this->manager->addAssets('js','/modules/system/assets/ui/js/foundation.controlutils.js');
         //$this->manager->addAssets('css','/modules/system/assets/ui/less/global.less');
-        //$this->manager->addAssets('css','/modules/system/assets/ui/less/icon.close.less');           
+        //$this->manager->addAssets('css','/modules/system/assets/ui/less/icon.close.less');
         $this->manager->addAssets('css','/modules/system/assets/ui/less/flashmessage.less');
         $this->manager->addAssets('js','/modules/system/assets/ui/js/flashmessage.js');
     }
@@ -29,7 +29,7 @@ class FlashShortcode extends Shortcode
 
             switch ($load) {
                 case 'static':
-                    $data = 'class="flash-message static '.(!empty($type) ? $type : '').'"'; 
+                    $data = 'class="flash-message static '.(!empty($type) ? $type : '').'"';
                     break;
                 case 'onload':
                     $data = 'class="'.(!empty($type) ? $type : '').'" data-control="flash-message" data-interval="'.(!empty($interval) ? $interval : '').'"';
