@@ -1,14 +1,25 @@
 {
-    "name": "linkonoid/shortcodesengine",
+    "name": "linkonoid/shortcodesengine-plugin",
     "description": "Shortcodes engine for OctoberCMS",
+    "keywords": [
+        "shortcodes",
+        "engine"
+    ],
+    "homepage": "https://github.com/linkonoid/oc-unidoc",
     "type": "october-plugin",
     "license": "GPL-3",
-    "authors": [
-        {
-            "name": "Max Barulin"
-        }
-    ],
+    "authors": [{
+        "name": "Linkonoid",
+        "email": "max@linkonoid.com",
+        "homepage": "https://linkonoid.com",
+        "role": "Developer"
+    }],
     "require": {
         "thunderer/shortcode": "^0.7.4"
+    },
+    "archive": {
+        "exclude": [
+            ".gitignore"
+        ]
     }
 }

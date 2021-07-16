@@ -1,8 +1,9 @@
-1.0.1: 
-      - Initialize plugin
+1.0.1:
+    - 'Initialize plugin.'
+    - linkonoid_unidoc_tables.php
 1.0.2:
-      - Events shema update for not conflict others plugins. Little bugs correction. Adding new shortcodes.
+    - 'Added presettings example in /impexp folder for quick start'
 1.0.3:
-      - Fixes bug on run with empty settings.
+    - Changed getting $id for document generate from GET-request on to native Laravel - "/docs/{id}"
 1.0.4:
-      - Little changes in code. Added "Blog" Shortcode.
+    - Added support installation for v2 (used Git-repository).

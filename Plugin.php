@@ -18,8 +18,6 @@ class Plugin extends PluginBase
 {
 
     protected $shortcodesManager;
-	
-    protected $shortcodeHandlersIsInit;
 
     /**
      * @var array Plugin dependencies
@@ -71,18 +69,15 @@ class Plugin extends PluginBase
             ]
         ];
     }
- 
-    public function boot()
+
+	public function boot()
     {
         $shortcodesManager = $this->shortcodesManager = new shortcodesManager();
 
         Event::listen('cms.page.init', function ($controller, $page) {
             $this->shortcodesManager->resetObjects();
             $this->shortcodesManager->resetAssets();
-            if(!$this->shortcodeHandlersIsInit){
-                Event::fire('linkonoid.shortcodesengine.onshortcodeHandlers',[$this->shortcodesManager]);
-                $this->shortcodeHandlersIsInit = true;
-            }
+            $onshortcodeHandlers = Event::fire('linkonoid.shortcodesengine.onshortcodeHandlers',[$this->shortcodesManager]);
         });
 
         Event::listen('linkonoid.shortcodesengine.onshortcodeHandlers', function () {
